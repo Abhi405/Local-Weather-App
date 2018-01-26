@@ -1,0 +1,39 @@
+h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 60px;
+}
+
+#loc-name {
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+}
+
+#current-temp {
+  font-size: 50px;
+}
+
+#unit {
+  font-size: 50px;
+}
+
+.footer {
+
+}
+
+#facebook {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#facebook:hover {
+  color: #0c2461;
+}
+
+#twitter {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#twitter:hover {
+  color: #0984e3;
+}

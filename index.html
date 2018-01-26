@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <script>
+  $(document).ready(function(){
+
+
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+
+    $.getJSON(
+    "https://fcc-weather-api.glitch.me/api/current?lat="+position.coords.latitude+"&lon="+position.coords.longitude, function(data){
+
+      $("#loc-name").text(data.name);
+      var cTemp = data.main.temp;
+      var fTemp = (cTemp * (9/5))+32;
+      var tSwap = true;
+
+
+      $("#current-temp").text(data.main.temp+"°");
+       $("#unit").html('<a href="#" id="unit">C</a>');
+
+
+
+      $("#unit").on("click", function(){
+
+        if(tSwap==true){
+          $("#current-temp").text(fTemp+"°");
+          tSwap=false;
+          $("#unit").html('<a href="#" id="unit">F</a>');
+        }
+        else {
+          $("#current-temp").text(cTemp+"°");
+          tSwap=true;
+          $("#unit").html('<a href="#" id="unit">C</a>');
+        }
+
+
+      });
+
+
+      $("#current-icon").html("<img src="+data.weather[0].icon+">");
+
+
+    });
+
+
+    });
+
+
+    }
+
+    $("#facebook").on("click", function(){
+
+     window.open("https://www.facebook.com/abhinav.chaudhary.338211");
+
+   });
+
+    $("#twitter").on("click", function(){
+
+      window.open("https://twitter.com/im_abhi10");
+
+    });
+
+
+  });
+
+
+
+  </script>
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container text-center">
+    <h1>Local Weather App</h1>
+    <div class="name" style="margin-top: 30px;">
+      <span id="loc-name"></span>
+    </div>
+    <div class="temp" style="margin-top: 30px;">
+      <span id="current-temp"></span>
+      <a href="#" id="unit"></a>
+      <br>
+      <span id="current-icon"></span>
+    </div>
+
+    <div class="footer" style="margin-top: 80px;">
+      Made by <span><a href="#">Abhinav</a></span>
+      <br>
+
+        <i class="fa fa-facebook-square" aria-hidden="true" title="Facebook" id="facebook"></i>
+
+
+        <i class="fa fa-twitter-square" aria-hidden="true" title="Twitter" id="twitter"></i>
+
+
+    </div>
+
+  </div>
+
+
+</body>
+
+
+</html>
