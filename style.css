@@ -37,3 +37,13 @@ h1 {
 #twitter:hover {
   color: #0984e3;
 }
+
+
+#linkedin {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#linkedin:hover {
+  color: #40739e;
+}
